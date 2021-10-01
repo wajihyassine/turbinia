@@ -27,5 +27,7 @@ spec:
                 configMapKeyRef:
                   name: turbinia-config
                   key: TURBINIA_CONF
+            - name: TURBINIA_EXTRA_ARGS
+              value: "-d"
           ports:
             - containerPort: 9200
