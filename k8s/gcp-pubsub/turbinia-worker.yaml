@@ -11,9 +11,14 @@ spec:
       app: turbinia-worker
   template:
     metadata:
+      annonations:
+        prometheus.io/port: "9200"
+        prometheus.io/scrape: "true"
       labels:
         app: turbinia-worker
     spec:
+      # The grace period needs to be set to the largest task timeout as
+      # set in the turbinia configuration file.
       terminationGracePeriodSeconds: 86400
       containers:
         - name: worker
