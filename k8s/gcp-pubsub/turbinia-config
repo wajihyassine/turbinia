@@ -14,7 +14,7 @@ DEBUG_TASKS = False
 
 # IMPORTANT: This folder needs to be shared among all workers running on the same host to
 # prevent resource locking issues!
-TMP_RESOURCE_DIR = '/tmp/turbinia-out'
+TMP_RESOURCE_DIR = '/var/run/lock'
 
 # Path to a resource state file used for tracking shared Evidence types. This should
 # be a shared path amongst all workers on a given host to properly update the state.
