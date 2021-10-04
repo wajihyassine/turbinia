@@ -1,3 +1,9 @@
+"""Turbinia Config Template"""
+
+from __future__ import unicode_literals
+from os import getenv
+from platform import node
+
 # General
 INSTANCE_ID = 'turbinia-74f96fd0b12c2708'
 STATE_MANAGER = 'Datastore'
@@ -11,6 +17,7 @@ SINGLE_RUN = False
 MOUNT_DIR_PREFIX = '/mnt/turbinia'
 SHARED_FILESYSTEM = False
 DEBUG_TASKS = False
+NODE_NAME = getenv('NODE_NAME', node())
 
 # IMPORTANT: This folder needs to be shared among all workers running on the same host to
 # prevent resource locking issues!

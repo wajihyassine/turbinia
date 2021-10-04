@@ -30,7 +30,7 @@ from turbinia import TurbiniaException
 
 log = logging.getLogger('turbinia')
 
-RETRY_MAX = 10
+RETRY_MAX = 20
 
 
 def IsBlockDevice(path):
@@ -112,7 +112,7 @@ def PreprocessAttachDisk(disk_name):
       log.info(
           'Block device {0:s} mode is {1}'.format(path,
                                                   os.stat(path).st_mode))
-    time.sleep(1)
+    time.sleep(2)
 
   message = None
   if not os.path.exists(path):
@@ -159,4 +159,4 @@ def PostprocessDetachDisk(disk_name, local_path):
     if not os.path.exists(path):
       log.info('Block device {0:s} is no longer attached'.format(path))
       break
-    time.sleep(5)
+    time.sleep(2)

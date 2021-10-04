@@ -52,6 +52,7 @@ REQUIRED_VARS = [
     'SCALEDOWN_WORKER_FILE',
     'OUTPUT_DIR',
     'TMP_DIR',
+    'TMP_RESOURCE_DIR',
     'SLEEP_TIME',
     'SINGLE_RUN',
     'MOUNT_DIR_PREFIX',
@@ -81,6 +82,7 @@ OPTIONAL_VARS = [
     'REDIS_HOST',
     'REDIS_PORT',
     'REDIS_DB',
+    'NODE_NAME',
     # Celery config
     'CELERY_BROKER',
     'CELERY_BACKEND',
