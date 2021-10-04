@@ -20,6 +20,13 @@ spec:
       # The grace period needs to be set to the largest task timeout as
       # set in the turbinia configuration file.
       terminationGracePeriodSeconds: 86400
+      initContainers:
+        - name: chown-lockfolder
+          image: busybox:1.28
+          command: ["chown", "-R", "999:999", "/var/run/lock"]
+          volumeMounts:
+            - mountPath: /var/run/lock
+              name: lockfolder
       containers:
         - name: worker
           #image: us-docker.pkg.dev/osdfir-registry/turbinia/release/turbinia-worker-dev:latest
