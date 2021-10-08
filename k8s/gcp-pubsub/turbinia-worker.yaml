@@ -21,16 +21,16 @@ spec:
       # set in the turbinia configuration file.
       terminationGracePeriodSeconds: 86400
       initContainers:
-        - name: chown-lockfolder
+        - name: init-filestore
           image: busybox:1.28
-          command: ["chown", "-R", "999:999", "/var/run/lock"]
+          command: ["sh", "-c", "chmod go+w /mnt/criticalvolume"]
           volumeMounts:
-            - mountPath: /var/run/lock
-              name: lockfolder
+            - mountPath: "/mnt/criticalvolume"
+              name: criticalvolume
       containers:
         - name: worker
-          #image: us-docker.pkg.dev/osdfir-registry/turbinia/release/turbinia-worker-dev:latest
-          image: rbdebeer/turbinia-worker-dev
+          #image: us-docker.pkg.dev/osdfir-registry/turbinia/release/turbinia-ng-worker-dev:latest
+          image: wyassine/turbinia-worker-dev
           lifecycle:
             preStop:
               exec:
@@ -49,10 +49,12 @@ spec:
             - name: TURBINIA_EXTRA_ARGS
               value: "-d"
           volumeMounts:
+            - mountPath: /mnt/criticalvolume
+              name: criticalvolume
             - mountPath: "/dev"
               name: dev
               readOnly: true
-            - mountPath: /var/run/lock
+            - mountPath: "/var/run/lock"
               name: lockfolder
               readOnly: false
           ports:
@@ -65,6 +67,10 @@ spec:
               memory: "8192Mi"
               cpu: "32000m"
       volumes:
+        - name: criticalvolume
+          persistentVolumeClaim:
+            claimName: criticalvolume-claim
+            readOnly: false
         - name: dev
           hostPath:
             path: /dev
