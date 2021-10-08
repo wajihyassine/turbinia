@@ -58,6 +58,7 @@ RUN mkdir /etc/turbinia && mkdir -p /mnt/turbinia/ && mkdir -p /var/lib/turbinia
     && mkdir -p /var/log/turbinia/ && chown -R turbinia:turbinia /mnt/turbinia/ \
     && chown -R turbinia:turbinia /var/lib/turbinia/ \
     && chown -R turbinia:turbinia /var/log/turbinia/ \
+    && chown -R turbinia:turbinia /tmp \ 
     && mkdir -p /home/turbinia && chown -R turbinia:turbinia /home/turbinia
 
 # Get a decent password list
