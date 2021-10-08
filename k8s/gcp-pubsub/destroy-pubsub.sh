@@ -6,5 +6,5 @@ kubectl delete -f turbinia-server-metrics-service.yaml
 kubectl delete -f turbinia-worker-metrics-service.yaml 
 kubectl delete -f turbinia-worker.yaml 
 kubectl delete -f turbinia-server.yaml 
-
-
+kubectl delete -f turbinia-criticalvolume-filestore.yaml 
+kubectl delete -f turbinia-criticalvolume-claim-filestore.yaml
