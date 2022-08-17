@@ -16,7 +16,6 @@ prometheus_client
 libcloudforensics
 protobuf
 proto-plus
-psq
 pyparsing
 pyyaml
 pyOpenSSL
